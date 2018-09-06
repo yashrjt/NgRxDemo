@@ -16,6 +16,13 @@ import { PageNotFoundComponent } from './home/page-not-found.component';
 
 /* Feature Modules */
 import { UserModule } from './user/user.module';
+import {StoreModule} from "@ngrx/store";
+import {EffectsModule} from "@ngrx/effects";
+import {StoreRouterConnectingModule} from '@ngrx/router-store';
+import { StoreDevtoolsModule} from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import {STORE_DEVTOOLS_CONFIG} from '@ngrx/store-devtools/src/config';
+import {noMonitor} from '@ngrx/store-devtools/src/instrument';
 
 @NgModule({
   imports: [
@@ -23,9 +30,19 @@ import { UserModule } from './user/user.module';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(ProductData),
     UserModule,
-    AppRoutingModule
-  ],
-  declarations: [
+    AppRoutingModule,
+    StoreModule.forRoot({}),
+    StoreRouterConnectingModule,
+    StoreDevtoolsModule.instrument(
+      {
+        name: 'APM Demo App DevTools',
+        maxAge: 25,
+        logOnly: environment.production,
+      }
+    ),
+    EffectsModule.forRoot([])
+     ],
+    declarations: [
     AppComponent,
     ShellComponent,
     MenuComponent,

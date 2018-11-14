@@ -10,14 +10,14 @@ describe('Test Product Reducer ' , () => {
     expect(state).toBe(initialState);
   });
 
-  it('should toggle the product codes' ,() =>{
+  it('should toggle the product codes' , () => {
     const payload = false;
     const action = new ToggleProductCode(payload);
     const state = fromProductReducer.reducer(initialState, action);
     expect(state.showProductCode).toBe(false);
-  })
+  });
 
-  it('should set Product Id' ,() =>{
+  it('should set Product Id' , () => {
     const payload = {
         'id': 1,
         'productName': 'Leaf Rake',
@@ -28,5 +28,5 @@ describe('Test Product Reducer ' , () => {
     const action = new SetCurrentProduct(payload);
     const state = fromProductReducer.reducer(initialState, action);
     expect(state.currentProductId).toBe(1);
-  })
-})
+  });
+});

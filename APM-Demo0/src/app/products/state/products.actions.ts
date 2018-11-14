@@ -1,6 +1,7 @@
 import {Action} from "@ngrx/store";
 import {Product} from "../product";
 
+
 export enum ProductActionTypes {
   ToggleProductType = '[Product]Toggle Product Code',
   Load= '[Product] Load',
@@ -13,8 +14,8 @@ export enum ProductActionTypes {
  }
 export class Load implements Action {
   readonly type = ProductActionTypes.Load;
-
 }
+
 export class LoadSuccess implements Action {
   readonly type = ProductActionTypes.LoadSucess;
   constructor(public payload: Product[]) {}

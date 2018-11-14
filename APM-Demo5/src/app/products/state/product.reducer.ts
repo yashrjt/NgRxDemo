@@ -9,7 +9,7 @@ export interface ProductState {
   error: string;
 }
 
-const initialState: ProductState = {
+export const initialState: ProductState = {
   showProductCode: true,
   currentProductId: null,
   products: [],
@@ -19,7 +19,7 @@ const initialState: ProductState = {
 export function reducer(state = initialState, action: ProductActions): ProductState {
 
   switch (action.type) {
-    case ProductActionTypes.ToggleProductCode:
+     case ProductActionTypes.ToggleProductCode:
       return {
         ...state,
         showProductCode: action.payload

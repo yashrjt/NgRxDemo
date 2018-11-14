@@ -44,6 +44,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
         this.products = products;
       }
     )
+
+    this.store.pipe(select(fromProduct.getShowProductCode)).subscribe(
+      (showProductState) => {
+        this.displayCode = showProductState;
+      }
+    )
     this.store.pipe(select(fromProduct.getShowProductCode)).subscribe(
       showProductCode => {
         this.displayCode = showProductCode;
@@ -56,6 +62,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   checkChanged(value: boolean): void {
+
    this.store.dispatch(new ProductActions.ToggleProductCode(value));
   }
 

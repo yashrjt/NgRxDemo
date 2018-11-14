@@ -36,6 +36,7 @@ export const getProducts = createSelector(
 );
 
 
+
 export function reducer(state= initialState, action: ProductActions) {
   switch (action.type) {
     case ProductActionTypes.ToggleProductType:

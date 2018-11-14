@@ -22,6 +22,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import {RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-store';
+import {reducers} from './state/reducer';
 
 @NgModule({
   imports: [
@@ -30,12 +32,13 @@ import { EffectsModule } from '@ngrx/effects';
     HttpClientInMemoryWebApiModule.forRoot(ProductData),
     UserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({reducers}),
     StoreDevtoolsModule.instrument({
       name: 'APM Demo App DevTools',
       maxAge: 25,
       logOnly: environment.production,
     }),
+    StoreRouterConnectingModule.forRoot({ serializer: RouterStateSerializer,}),
     EffectsModule.forRoot([])
   ],
   declarations: [

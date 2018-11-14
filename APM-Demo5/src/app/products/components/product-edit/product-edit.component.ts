@@ -81,7 +81,7 @@ export class ProductEditComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-
+  console.log(`Simple changes ${changes.selectedProduct.currentValue}`);
     // patch form with value from the store
     if (changes.selectedProduct) {
       const product: any = changes.selectedProduct.currentValue as Product;

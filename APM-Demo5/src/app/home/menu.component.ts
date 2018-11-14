@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
-import { AuthService } from '../user/auth.service';
+import { AuthService } from "../user/auth.service";
 
 @Component({
-  selector: 'pm-menu',
-  templateUrl: './menu.component.html'
+  selector: "pm-menu",
+  templateUrl: "./menu.component.html"
 })
 export class MenuComponent implements OnInit {
-  pageTitle = 'Acme Product Management';
+  pageTitle = "Acme Product Management";
 
   get isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
@@ -18,17 +18,15 @@ export class MenuComponent implements OnInit {
     if (this.authService.currentUser) {
       return this.authService.currentUser.userName;
     }
-    return '';
+    return "";
   }
 
-  constructor(private router: Router,
-              private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   logOut(): void {
     this.authService.logout();
-    this.router.navigate(['/welcome']);
+    this.router.navigate(["/welcome"]);
   }
 }

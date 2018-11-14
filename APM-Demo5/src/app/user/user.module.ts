@@ -8,6 +8,7 @@ import { LoginComponent } from './login.component';
 /* NgRx */
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './state/user.reducer';
+import { UserComponent } from './user.component';
 
 const userRoutes: Routes = [
   { path: 'login', component: LoginComponent }
@@ -20,7 +21,8 @@ const userRoutes: Routes = [
     StoreModule.forFeature('users', reducer)
   ],
   declarations: [
-    LoginComponent
+    LoginComponent,
+    UserComponent
   ]
 })
 export class UserModule { }

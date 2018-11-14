@@ -10,6 +10,7 @@ import { Product } from '../product';
 import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import * as productActions from './product.actions';
+import {switchMap} from 'rxjs/internal/operators';
 
 @Injectable()
 export class ProductEffects {
@@ -20,7 +21,7 @@ export class ProductEffects {
   @Effect()
   loadProducts$: Observable<Action> = this.actions$.pipe(
     ofType(productActions.ProductActionTypes.Load),
-    mergeMap(action =>
+    switchMap(action =>
       this.productService.getProducts().pipe(
         map(products => (new productActions.LoadSuccess(products))),
         catchError(err => of(new productActions.LoadFail(err)))

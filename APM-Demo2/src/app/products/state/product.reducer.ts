@@ -20,7 +20,7 @@ export interface ProductState {
 }
 
 const initialState: ProductState = {
-  showProductCode: true,
+  showProductCode:true,
   currentProduct: null,
   products: []
 };
@@ -49,7 +49,8 @@ export function reducer(state = initialState, action: ProductActions): ProductSt
     case ProductActionTypes.ToggleProductCode:
       return {
         ...state,
-        showProductCode: action.payload
+        showProductCode: action.payload,
+
       };
 
     case ProductActionTypes.SetCurrentProduct:

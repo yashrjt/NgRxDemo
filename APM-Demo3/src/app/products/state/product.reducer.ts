@@ -40,6 +40,7 @@ export const getCurrentProduct = createSelector(
   state => state.currentProduct
 );
 
+
 export const getProducts = createSelector(
   getProductFeatureState,
   state => state.products
@@ -84,6 +85,7 @@ export function reducer(state = initialState, action: ProductActions): ProductSt
       };
 
     case ProductActionTypes.LoadSuccess:
+      console.log(action.payload);
       return {
         ...state,
         products: action.payload,
